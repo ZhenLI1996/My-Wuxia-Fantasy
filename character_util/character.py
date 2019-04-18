@@ -63,7 +63,7 @@ class NPC(Character):
         self._hp = hp
         self._atkp = atkp
         self._defp = defp
-        self._rel_events = rel_events if rel_events else {}     # {event_id}
+        self._rel_events = rel_events if rel_events else set()     # {event_id}
 
     def __repr__(self):
         return f"NPC(npc_id={self._npc_id}," \

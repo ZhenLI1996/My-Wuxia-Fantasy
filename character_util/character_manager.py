@@ -6,7 +6,7 @@ from character_util.character import LV_UP_CONSTANT
 
 class CharacterManager:
     _player = None
-    _npc_dict = {}       # [ npc_id ]
+    _npc_dict = {}       # { npc_id : NPC }
     _max_npc_id = 0
 
     @property
@@ -29,7 +29,7 @@ class CharacterManager:
         return self._npc_dict
 
     def add_npc(self,
-                npc_id:     int = _max_npc_id+1,
+                npc_id: int = _max_npc_id+1,
                 name:   str = "NPC",
                 lv:     int = 1,
                 hp:     int = 1,
@@ -38,9 +38,9 @@ class CharacterManager:
                 rel_events: TYPE_REL_EVENTS = None):
         if npc_id in self._npc_dict:
             raise ValueError(f"npc id {npc_id} exists")
-
         self._npc_dict[npc_id] = NPC(npc_id=npc_id, name=name, lv=lv, hp=hp,
                                      atkp=atkp, defp=defp, rel_events=rel_events)
+        return npc_id
 
     def get_npc_by_id(self, npc_id):
         if npc_id not in self._npc_dict:
