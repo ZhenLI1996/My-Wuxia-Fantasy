@@ -1,5 +1,11 @@
-from character_util.character_manager import CharacterManager
-from event_util.event_manager import EventManager
+# import sys
+# import os
+# PATH = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), ".."))
+# sys.path.append(PATH)
+
+
+from ..character_util.character_manager import CharacterManager
+from ..event_util.event_manager import EventManager
 
 char_manager = CharacterManager()
 event_manager = EventManager()
