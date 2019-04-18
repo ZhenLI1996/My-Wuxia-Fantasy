@@ -1,5 +1,5 @@
-from event_util.event import Event
-from event_util.event import SCRIPT_PATH
+from .event import Event
+from .event import SCRIPT_PATH
 
 
 class EventManager:

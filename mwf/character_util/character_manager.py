@@ -1,8 +1,10 @@
-from character_util.character import NPC, Player
-from character_util.character import TYPE_LV_UP_CAL, TYPE_REL_EVENTS
-from character_util.character import lv_up_linear, lv_up_quad
-from character_util.character import LV_UP_CONSTANT
-
+from .npc import NPC
+from .npc import TYPE_REL_EVENTS
+from .player import Player
+from .player import TYPE_LV_UP_CAL
+from .player import LV_UP_CONSTANT
+from .player import lv_up_linear
+from .player import lv_up_quad
 
 class CharacterManager:
     _player = None

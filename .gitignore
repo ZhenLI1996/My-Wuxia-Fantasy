@@ -1,3 +1,7 @@
+mwf_prototype.egg-info
+mwf_prototype.egg-info/*
+
+
 # Logs
 logs
 *.log

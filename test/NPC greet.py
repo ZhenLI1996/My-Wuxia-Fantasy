@@ -4,8 +4,8 @@
 # sys.path.append(PATH)
 
 
-from ..character_util.character_manager import CharacterManager
-from ..event_util.event_manager import EventManager
+from mwf.character_util import CharacterManager
+from mwf.event_util import EventManager
 
 char_manager = CharacterManager()
 event_manager = EventManager()
