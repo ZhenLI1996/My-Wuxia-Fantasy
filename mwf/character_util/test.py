@@ -1,4 +1,4 @@
-from .player import Player, LV_UP_CONSTANT
+from mwf.character_util.player import Player, LV_UP_CONSTANT
 
 
 p = Player()

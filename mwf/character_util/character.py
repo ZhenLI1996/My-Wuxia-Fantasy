@@ -5,6 +5,7 @@ class Character:
     _hp = 0
     _atkp = 0
     _dtkp = 0
+    _money = 0
 
     def __init__(self,
                  name: str = "NPC",
@@ -12,12 +13,14 @@ class Character:
                  hp: int = 1,
                  atkp: int = 0,
                  defp: int = 0,
+                 money: int = 0,
                  ):
         self._name  = name
         self._lv    = lv
         self._hp    = hp
         self._atkp  = atkp
         self._defp  = defp
+        self._money = money
 
     @classmethod
     def setter(cls, attr, req_type):

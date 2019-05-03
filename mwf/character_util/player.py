@@ -26,6 +26,7 @@ class Player(Character):
                  hp:    int = 1,
                  atkp:  int = 0,
                  defp:  int = 0,
+                 money:  int = 0,
                  exp:   int = 0,
                  lv_up_cal: TYPE_LV_UP_CAL = lv_up_linear(LV_UP_CONSTANT)):
         super().__init__()
@@ -34,6 +35,7 @@ class Player(Character):
         self._hp   = hp
         self._atkp = atkp
         self._defp = defp
+        self._money = money
         self._exp  = exp
         self._lv_up_cal = lv_up_cal
 
@@ -43,12 +45,14 @@ class Player(Character):
                f"hp={self._hp}," \
                f"atkp={self._atkp}," \
                f"defp={self._defp}," \
+               f"money={self._money}," \
                f"exp={self._exp}," \
                f"lv_up_cal={self._lv_up_cal})"
 
     def __str__(self):
         return f"Player: {self._name}, Level: {self._lv}, HP: {self._hp}, " \
-               f"ATK: {self._atkp}, DEF: {self._defp}, EXP: {self._exp}, EXP to Level Up: {self.req_exp_to_lv_up}"
+               f"ATK: {self._atkp}, DEF: {self._defp}, money: {self._money}, " \
+               f"EXP: {self._exp}, EXP to Level Up: {self.req_exp_to_lv_up}"
 
 
     name = property(fset=Character.setter("_name", str), fget=Character.getter("_name"))
@@ -56,6 +60,7 @@ class Player(Character):
     hp = property(fset=Character.setter("_hp", int), fget=Character.getter("_hp"))
     atkp = property(fset=Character.setter("_atkp", int), fget=Character.getter("_atkp"))
     defp = property(fset=Character.setter("_defp", int), fget=Character.getter("_defp"))
+    money = property(fset=Character.setter("_money", int), fget=Character.getter("_money"))
 
     @property
     def lv_up_call(self):

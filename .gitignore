@@ -1,6 +1,8 @@
 mwf_prototype.egg-info
 mwf_prototype.egg-info/*
 
+.idea/*
+
 
 # Logs
 logs

@@ -3,6 +3,10 @@ from .character import Character
 from typing import Set
 TYPE_REL_EVENTS = Set[int]
 
+from mwf.map_util.position import Position
+from typing import Callable
+TYPE_MOVE_METHOD = Callable[[Position], Position]
+
 
 class NPC(Character):
     _npc_id = -1
@@ -13,6 +17,7 @@ class NPC(Character):
                  hp:    int = 1,
                  atkp:  int = 0,
                  defp:  int = 0,
+                 money: int = 0,
                  rel_events: TYPE_REL_EVENTS = None):
         super().__init__()
         self._npc_id = npc_id
@@ -21,6 +26,7 @@ class NPC(Character):
         self._hp = hp
         self._atkp = atkp
         self._defp = defp
+        self._money = money
         self._rel_events = rel_events if rel_events else set()     # {event_id}
 
     def __repr__(self):
@@ -30,11 +36,12 @@ class NPC(Character):
                f"hp={self._hp}," \
                f"atkp={self._atkp}," \
                f"defp={self._defp}," \
+               f"money={self._money}," \
                f"rel_events={self.rel_events})"
 
     def __str__(self):
         return f"NPC: {self._name}, Level: {self._lv}, HP: {self._hp}, " \
-               f"ATK: {self._atkp}, DEF: {self._defp}"
+               f"ATK: {self._atkp}, DEF: {self._defp}, money: {self._money}"
 
 
     npc_id = property(fset=Character.setter("_npc_id", int), fget=Character.getter("_npc_id"))
@@ -43,6 +50,7 @@ class NPC(Character):
     hp = property(fset=Character.setter("_hp", int), fget=Character.getter("_hp"))
     atkp = property(fset=Character.setter("_atkp", int), fget=Character.getter("_atkp"))
     defp = property(fset=Character.setter("_defp", int), fget=Character.getter("_defp"))
+    money = property(fset=Character.setter("_money", int), fget=Character.getter("_money"))
 
     @property
     def rel_events(self):
