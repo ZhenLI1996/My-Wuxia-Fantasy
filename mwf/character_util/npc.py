@@ -54,6 +54,7 @@ class NPC(Character):
                f"name={self._name}," \
                f"lv={self._lv}," \
                f"hp={self._hp}," \
+               f"max_hp={self._max_hp}," \
                f"atkp={self._atkp}," \
                f"defp={self._defp}," \
                f"money={self._money}," \
@@ -62,7 +63,7 @@ class NPC(Character):
                f"move_method={self._move_method})"
 
     def __str__(self):
-        return f"NPC: {self._name}, Level: {self._lv}, HP: {self._hp}, " \
+        return f"NPC: {self._name}, Level: {self._lv}, HP: {self._hp}/{self._max_hp}, " \
                f"ATK: {self._atkp}, DEF: {self._defp}, money: {self._money}"
 
 
