@@ -1,10 +1,9 @@
-from .npc import NPC
-from .npc import TYPE_REL_EVENTS
-from .player import Player
-from .player import TYPE_LV_UP_CAL
-from .player import LV_UP_CONSTANT
-from .player import lv_up_linear
-from .player import lv_up_quad
+from mwf.character_util.npc import NPC
+from mwf.character_util.npc import TYPE_REL_EVENTS
+
+from mwf.character_util.player import Player
+from mwf.character_util.player import TYPE_LV_UP_CAL
+from mwf.character_util.player import LV_UP_CONSTANT, lv_up_linear, lv_up_quad
 
 class CharacterManager:
     _player = None
@@ -19,12 +18,13 @@ class CharacterManager:
                       name: str = "Player",
                       lv:   int = 1,
                       hp:   int = 1,
+                      max_hp:   int = 1,
                       atkp: int = 0,
                       defp: int = 0,
+                      money:  int = 0,
                       exp:  int = 0,
                       lv_up_cal: TYPE_LV_UP_CAL = lv_up_linear(LV_UP_CONSTANT)):
-        self._player = Player(name=name, lv=lv, hp=hp, atkp=atkp, defp=defp, exp=exp, lv_up_cal=lv_up_cal)
-
+        self._player = Player(name=name, lv=lv, hp=hp, max_hp=max_hp, atkp=atkp, defp=defp, money=money, exp=exp, lv_up_cal=lv_up_cal)
 
     @property
     def npc_dict(self):
@@ -35,13 +35,15 @@ class CharacterManager:
                 name:   str = "NPC",
                 lv:     int = 1,
                 hp:     int = 1,
+                max_hp: int = 1,
                 atkp:   int = 0,
                 defp:   int = 0,
+                money:  int = 0,
                 rel_events: TYPE_REL_EVENTS = None):
         if npc_id in self._npc_dict:
             raise ValueError(f"npc id {npc_id} exists")
-        self._npc_dict[npc_id] = NPC(npc_id=npc_id, name=name, lv=lv, hp=hp,
-                                     atkp=atkp, defp=defp, rel_events=rel_events)
+        self._npc_dict[npc_id] = NPC(npc_id=npc_id, name=name, lv=lv, hp=hp, max_hp=max_hp,
+                                     atkp=atkp, defp=defp, money=money, rel_events=rel_events)
         return npc_id
 
     def get_npc_by_id(self, npc_id):

@@ -18,7 +18,7 @@ class Event:
         self._full_path = os.path.join(path, filename)
         with open(self._full_path, "r", encoding="utf-8") as fin:
             self._j = json.load(fin)
-        self._condition = lambda _ : True
+        self._condition = lambda _ : True  # TODO (event condition)
         self._node = self._j["content"]["start_node_id"]
 
     @property
@@ -38,8 +38,11 @@ class Event:
         return self._node is None
 
     def choose(self, choice_id):
-        self._node = self._j["content"]["nodes"][self._node]\
-                            ["choices"][choice_id]["next"]
+        choices_buf = self._j["content"]["nodes"]\
+                                 [self._node]["choices"]
+        if choice_id not in choices_buf:
+            raise ValueError(f"choice id {choice_id} not found")
+        self._node = choices_buf[choice_id]["next"]
 
 
 if __name__ == "__main__":

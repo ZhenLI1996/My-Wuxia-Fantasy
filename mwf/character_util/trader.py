@@ -14,6 +14,7 @@ class Trader(NPC):
                  atkp:  int = 0,
                  defp:  int = 0,
                  money:  int = 0,
+                 bag_id: int = -1,
                  rel_events: TYPE_REL_EVENTS = None):
         super().__init__(
             npc_id=npc_id,
@@ -24,6 +25,7 @@ class Trader(NPC):
             defp=defp,
             money=money,
             rel_events=rel_events,
+            bag_id=bag_id,
         )
 
 

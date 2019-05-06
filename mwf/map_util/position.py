@@ -1,4 +1,5 @@
 # Immutable
+
 class Position:
     def __init__(self,
                  x: int,
@@ -17,7 +18,7 @@ class Position:
     def __setattr__(self, key, value):
         raise AttributeError("Can't set attribute {}, Position objects are immutable".format(key))
 
-    def __add__(self, other):
+    def __add__(self, other) -> 'Position':
         if isinstance(other, Position):
             return Position(
                 x=self._x + other._x,
@@ -27,6 +28,6 @@ class Position:
             raise TypeError("unsupported operand type(s) for +: 'Position' and '{}'".format(type(other)))
 
     @classmethod
-    def manhattan_distance(cls, p0, p1):
+    def manhattan_distance(cls, p0: 'Position', p1: 'Position') -> int:
         return abs(p0._x - p1._x) + abs(p0._y - p1._y)
 
