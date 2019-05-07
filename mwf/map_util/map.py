@@ -1,10 +1,9 @@
 from typing import Tuple
 
-
 # TODO: Map
 
 class Map:
-    pass
+    # pass
     def __init__(self,
                  size: Tuple[int, int],
                  char_manager):

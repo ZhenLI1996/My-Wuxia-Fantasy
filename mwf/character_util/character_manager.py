@@ -44,6 +44,7 @@ class CharacterManager:
             raise ValueError(f"npc id {npc_id} exists")
         self._npc_dict[npc_id] = NPC(npc_id=npc_id, name=name, lv=lv, hp=hp, max_hp=max_hp,
                                      atkp=atkp, defp=defp, money=money, rel_events=rel_events)
+        self._max_npc_id = max(self._max_npc_id, npc_id)
         return npc_id
 
     def get_npc_by_id(self, npc_id):
