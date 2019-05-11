@@ -1,0 +1,3 @@
+import mwf
+
+mwf.run()

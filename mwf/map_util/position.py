@@ -27,6 +27,9 @@ class Position:
         else:
             raise TypeError("unsupported operand type(s) for +: 'Position' and '{}'".format(type(other)))
 
+    def __hash__(self):
+        return hash((self._x, self._y))
+
     @classmethod
     def manhattan_distance(cls, p0: 'Position', p1: 'Position') -> int:
         return abs(p0._x - p1._x) + abs(p0._y - p1._y)

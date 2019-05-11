@@ -27,4 +27,18 @@ Class Methods
 
 ## `Map` - Class of Maps
 
-TODO
+Attributes
+
+- `_size`
+- `_char2pos`: dict `{char_id : Position}`
+- `_pos2chars`: dict `{Position: List[char_id]}`
+
+Properties
+
+- `size`: getter, (x, y)
+
+Methods
+
+- `add_char(char_id: int, init_pos: Position) -> None`: raises `ValueError` when `Position` not in map
+- `get_pos_by_char_id(char_id: int) -> Position`: raises `ValueError` when not in 
+- `get_char_ids_by_pos(pos: Position) -> List[int]`: raises `ValueError` when not in 
