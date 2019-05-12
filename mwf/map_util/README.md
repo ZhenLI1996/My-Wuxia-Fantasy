@@ -42,3 +42,4 @@ Methods
 - `add_char(char_id: int, init_pos: Position) -> None`: raises `ValueError` when `Position` not in map
 - `get_pos_by_char_id(char_id: int) -> Position`: raises `ValueError` when not in 
 - `get_char_ids_by_pos(pos: Position) -> List[int]`: raises `ValueError` when not in 
+- `advance_on_time(new_pos_dict: Dict[int, Position]) -> None`: move all characters

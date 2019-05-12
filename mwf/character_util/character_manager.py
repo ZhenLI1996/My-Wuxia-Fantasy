@@ -1,5 +1,6 @@
 from mwf.character_util.npc import NPC
-from mwf.character_util.npc import TYPE_REL_EVENTS
+from mwf.character_util.npc import TYPE_REL_EVENTS, TYPE_MOVE_METHOD
+from mwf.character_util.npc import random_move
 
 from mwf.character_util.player import Player
 from mwf.character_util.player import TYPE_LV_UP_CAL
@@ -39,11 +40,13 @@ class CharacterManager:
                 atkp:   int = 0,
                 defp:   int = 0,
                 money:  int = 0,
-                rel_events: TYPE_REL_EVENTS = None):
+                rel_events: TYPE_REL_EVENTS = None,
+                move_method: TYPE_MOVE_METHOD = random_move):
         if npc_id in self._npc_dict:
             raise ValueError(f"npc id {npc_id} exists")
         self._npc_dict[npc_id] = NPC(npc_id=npc_id, name=name, lv=lv, hp=hp, max_hp=max_hp,
-                                     atkp=atkp, defp=defp, money=money, rel_events=rel_events)
+                                     atkp=atkp, defp=defp, money=money, rel_events=rel_events,
+                                     move_method=move_method)
         self._max_npc_id = max(self._max_npc_id, npc_id)
         return npc_id
 
