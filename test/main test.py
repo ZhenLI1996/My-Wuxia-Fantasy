@@ -1,3 +1,3 @@
 import mwf
 
-mwf.run()
+mwf.run(debug=True)

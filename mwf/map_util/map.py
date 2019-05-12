@@ -61,6 +61,16 @@ class Map:
             for x in range(self._size[0])
         )
 
+    def gen_str_with_player(self, player_pos):
+        if (isinstance(player_pos, Position) or isinstance(player_pos, tuple)) \
+                and player_pos in self._pos2chars:
+            self._pos2chars[player_pos].append("player")
+            buf = str(self)
+            self._pos2chars[player_pos].remove("player")
+            return buf
+        else:
+            raise TypeError(f"argument pos must be Position or Tuple[int, int], not {type(player_pos)}")
+
     def add_char(self, char_id: int, init_pos: Position):
         if init_pos not in self._pos2chars:
             raise ValueError(f"init Position {init_pos} out of bound")
@@ -79,7 +89,7 @@ class Map:
             if pos not in self._pos2chars:
                 raise ValueError(f"Position {pos} out of bound")
             return self._pos2chars[pos]
-        raise TypeError(f"argument pos must be Position or Tuple[int, int]")
+        raise TypeError(f"argument pos must be Position or Tuple[int, int], not {type(pos)}")
 
     def advance_on_time(self, new_pos_dict: Dict[int, Position]):
         new_pos2chars = Map.gen_pos2chars(size=self._size)

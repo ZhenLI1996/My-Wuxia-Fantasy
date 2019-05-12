@@ -5,22 +5,27 @@ from typing import Set
 TYPE_REL_EVENTS = Set[int]
 
 from mwf.map_util.position import Position
-from typing import Callable
-TYPE_MOVE_METHOD = Callable[[Position], Position]
+from mwf.map_util.map import Map
+from typing import Tuple, Callable
+TYPE_MOVE_METHOD = Callable[[Map, Position], Position]
 
 import random
 
-def random_move(p: Position) -> Position:
+
+def random_move(map: Map, p: Position) -> Position:
     r = random.randrange(4)
     if r == 0:
-        return p + Position(0, 1)
+        buf = p + Position(0, 1)
     elif r == 1:
-        return p + Position(0, -1)
+        buf = p + Position(0, -1)
     elif r == 2:
-        return p + Position(1, 0)
+        buf = p + Position(1, 0)
     else:
-        return p + Position(-1, 0)
-
+        buf = p + Position(-1, 0)
+    if buf in map:
+        return buf
+    else:
+        return p
 
 class NPC(Character):
     _npc_id = -1

@@ -31,6 +31,10 @@ class CharacterManager:
     def npc_dict(self):
         return self._npc_dict
 
+    @property
+    def npc_ids(self):
+        return sorted(list(self._npc_dict.keys()))
+
     def add_npc(self,
                 npc_id: int = _max_npc_id+1,
                 name:   str = "NPC",
