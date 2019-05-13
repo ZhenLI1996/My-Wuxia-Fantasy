@@ -1,6 +1,7 @@
 # from mwf.map_util import Map
 # TODO: I have to import Map first to avoid circular import problem. fix it asap!
-from mwf.character_util import CharacterManager, DeathError
+from mwf.character_util import CharacterManager
+from mwf.infra.mwf_errors import DeathError
 
 def log(message, *objs):
     print(message)

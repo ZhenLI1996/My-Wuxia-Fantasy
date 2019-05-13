@@ -1,4 +1,5 @@
-from mwf.character_util import CharacterManager, DeathError
+from mwf.character_util import CharacterManager
+from mwf.infra.mwf_errors import DeathError
 
 def log(message, *objs):
     print(message)
@@ -25,6 +26,8 @@ char_manager.create_player(
 )
 player = char_manager.player
 log("create player", player)
+
+log("single attr", player.hp)
 
 # change name
 player.name = "yay!"

@@ -2,9 +2,7 @@
 
 from mwf.infra import getter, setter
 
-class DeathError(Exception):
-    pass
-
+from mwf.infra.mwf_errors import DeathError
 
 def adder(attr: str, callback_name: str = "", debug: bool = False):
     def add_any(self, value):

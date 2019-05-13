@@ -1,4 +1,3 @@
-
 from .main import run
 from .bag_util import BagManager
 from .character_util import CharacterManager
