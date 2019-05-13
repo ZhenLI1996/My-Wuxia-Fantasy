@@ -40,7 +40,8 @@ def combat(player: Player, opponent: Character):
                 damage = attack(attacker=player, defender=opponent)
             except DeathError:
                 # opponent dies
-                exp = opponent.lv * EXP_PARAMETER * (1 + (random.random() - 0.5) * EXP_RANDOM_PARAMETER * 2)
+                exp = max(1,
+                          int(opponent.lv * EXP_PARAMETER * (1 + (random.random() - 0.5) * EXP_RANDOM_PARAMETER * 2)))
                 print(f"You win. Exp earned = {exp}")
                 return exp
         elif player_move.lower().startswith("r"):

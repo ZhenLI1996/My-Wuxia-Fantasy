@@ -33,6 +33,11 @@ class Event:
     def current_node_content(self):
         return self._j["content"]["nodes"][self._node]
 
+    @property
+    def current_node_is_combat(self):
+        return "combat" in self._j["content"]["nodes"][self._node] \
+               and self._j["content"]["nodes"][self._node]["combat"]
+
 
     def is_end(self):
         return self._node is None

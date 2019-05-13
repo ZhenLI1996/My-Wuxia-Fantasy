@@ -36,10 +36,11 @@
       },
 
       "5": {
-        "text": "好吧，再见。",
+        "text": "我生气了，我要揍你。",
         "choices" : {
-          "1": { "text" : "再见。", "next" : null }
-        }
+          "1": { "text" : "Soft, try me", "next" : null }
+        },
+        "combat": true
       },
 
       "6": {

@@ -14,3 +14,5 @@ from .item_util import ItemManager
 from .map_util import Position, Map
 
 from .combat.main import combat
+
+from .infra.mwf_errors import DeathError

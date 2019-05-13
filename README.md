@@ -9,4 +9,4 @@ A text-based RPG game of Chinese Wuxia background. Using Python 3 from scratch.
 At root directory, run `pip install -e .`
 
 ## Run
-Simply run `./test/main test.py`
+For testing, simply run `./test/main test.py`

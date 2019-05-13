@@ -27,11 +27,28 @@ def run(debug=False):
     event_id = event_manager.add_event(filename="greeting.json")
 
     # create the NPC
-    npc_id = char_manager.add_npc(rel_events={event_id},
-                                  move_method=mwf.character_util.npc.random_move)
+    npc_id = char_manager.add_npc(
+        name="大强",
+        lv=1000,
+        atkp=8,
+        defp=4,
+        hp=80,
+        max_hp=80,
+        rel_events={event_id},
+        move_method=mwf.character_util.npc.random_move
+    )
 
     # create player
-    player = char_manager.create_player()
+    char_manager.create_player(
+        name="小明",
+        lv=5,
+        atkp=10,
+        defp=5,
+        hp=100,
+        max_hp=100,
+        exp=100
+    )
+    player = char_manager.player
 
     # add npcs to map
     npc_pos = mwf.Position(random.randrange(MAX_X), random.randrange(MAX_Y))
@@ -52,6 +69,8 @@ def run(debug=False):
 
     if debug:
         log("=== initial map ===\n", map.gen_str_with_player(player_pos=player_pos))
+
+    print(f"Your name is {player.name}")
 
     # repl
     while True:
@@ -82,6 +101,7 @@ def run(debug=False):
         if debug:
             log("=== current ===\n", map.gen_str_with_player(player_pos=player_pos))
 
+        # run events
         char_ids = map.get_char_id_by_pos(pos=player_pos)
         for c_id in char_ids:
             npc = char_manager.get_npc_by_id(c_id)
@@ -93,6 +113,16 @@ def run(debug=False):
                     for choice_id, choice_content in content["choices"].items():
                         print(choice_id, choice_content["text"])
                     user_choice = input().strip()
+                    if event.current_node_is_combat:
+                        try:
+                            curr_lv = player.lv
+                            exp = mwf.combat(player=player, opponent=npc)
+                            new_lv = player.add_exp(value=exp)
+                            if new_lv > curr_lv:
+                                print(f"Level up. Your current level is {new_lv}")
+                        except mwf.DeathError:
+                            print("You died. Game terminated.")
+                            exit(0)
                     event.choose(user_choice)
 
         # advance on time
