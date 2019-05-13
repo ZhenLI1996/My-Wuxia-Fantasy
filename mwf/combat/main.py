@@ -20,7 +20,7 @@ def attack(attacker: Character, defender: Character):
 
 
 def rest(char: Character):
-    amount = max(1, int(char.max_hp * (1 + (random.random() - 0.5) * REST_RANDOM_PARAMETER * 2)))
+    amount = max(1, int(char.max_hp * (random.random() - 0.5) * REST_RANDOM_PARAMETER * 2))
     print(f"{char.name} takes a rest and restores {amount} HP.")
     char.add_hp(amount)
     return amount
@@ -43,8 +43,11 @@ def combat(player: Player, opponent: Character):
                 exp = opponent.lv * EXP_PARAMETER * (1 + (random.random() - 0.5) * EXP_RANDOM_PARAMETER * 2)
                 print(f"You win. Exp earned = {exp}")
                 return exp
-        elif player_move.lower().startswith("rest"):
+        elif player_move.lower().startswith("r"):
             rest(player)
+        else:
+            print("You did nothing.")
+
 
         # opponent move
         r = random.random()

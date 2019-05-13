@@ -24,3 +24,7 @@ opponent_id = char_manager.add_npc(
 player = char_manager.player
 opponent = char_manager.get_npc_by_id(opponent_id)
 
+mwf.combat(player=player, opponent=opponent)
+
+
+
